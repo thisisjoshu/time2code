@@ -111,7 +111,7 @@ int main(void) {
     return 0;
 }
 
-// Given an Australian town and a 2020 UTC time
+// Given an Australian town and a 2021 UTC time
 // return the local time in the Australian town
 
 // time is returned as hours*100 + minutes
