@@ -163,8 +163,7 @@ int get_local_time(int town, int utc_month, int utc_day, int utc_time) {
     return local_time;
 }
 
-// ADD YOUR FUNCTIONS HERE
-
+// get_timezone returns the timezone for a town given the utc date and utc time
 int get_timezone(int town, int utc_month, int utc_day, int utc_time) {
     // towns that do not observe daylight savings 
     if (town == TOWN_PERTH) 
@@ -213,6 +212,7 @@ int get_timezone(int town, int utc_month, int utc_day, int utc_time) {
     }
 }
 
+// this function determines whether or not a town observes ACDT
 int town_observes_acdt(int town) {
     if (town == TOWN_ADELAIDE || town == TOWN_BROKEN_HILL)
         return TRUE;
@@ -220,6 +220,7 @@ int town_observes_acdt(int town) {
         return FALSE;
 }
 
+// this function determines whether or not a town observes AEDT
 int town_observes_aedt(int town) {
     if (town == TOWN_CANBERRA || town == TOWN_MELBOURNE ||
         town == TOWN_SYDNEY || town == TOWN_HOBART)
@@ -228,6 +229,7 @@ int town_observes_aedt(int town) {
         return FALSE;
 }
 
+// this function determines whether or not a town observes LHDT
 int town_observes_lhdt(int town) {
     if (town == TOWN_LORD_HOWE_IS)
         return TRUE;
@@ -235,6 +237,7 @@ int town_observes_lhdt(int town) {
         return FALSE;
 }
 
+// this function determines whether or not a town observes NZDT
 int town_observes_nzdt(int town) {
     if (town == TOWN_AUCKLAND || town == TOWN_CHRISTCHURCH ||
         town == TOWN_WELLINGTON)
@@ -243,6 +246,9 @@ int town_observes_nzdt(int town) {
         return FALSE;
 }
 
+// this function determines if a given utc date and time is in australia's
+// standard time. All australia timezones except for lord 
+// howe island follows this same pattern.
 int aus_standard_time(int month, int day, int time) {
     int time_converted = (month * 1000000) + (day * 10000) + time;
     int standard_time_start = 4040300;      // 4th April 3:00am
@@ -255,6 +261,8 @@ int aus_standard_time(int month, int day, int time) {
         return FALSE;
 }
 
+// this function determines if a given utc date and time is in nz's
+// standard time.
 int nz_standard_time(int month, int day, int time) {
     int time_converted = (month * 1000000) + (day * 10000) + time;
     int standard_time_start = 4040300;      // 4th April 3:00am
@@ -267,6 +275,8 @@ int nz_standard_time(int month, int day, int time) {
         return FALSE;
 }
 
+// this function determines if a given utc date and time is in 
+// lord howe island's standard time.
 int lh_standard_time(int month, int day, int time) {
     int time_converted = (month * 1000000) + (day * 10000) + time;
     int standard_time_start = 4040200;      // 4th April 2:00am
@@ -279,6 +289,9 @@ int lh_standard_time(int month, int day, int time) {
         return FALSE;
 }
 
+// this function, given an offset and the utc time, adds the 
+// offset to the utc time. It fixes invalid times before returning
+// the new time (local time)
 int add_offset(int time, int offset) {
 
     int offset_minutes = offset % 100;
@@ -294,11 +307,13 @@ int add_offset(int time, int offset) {
     if (new_time_minutes + offset_minutes >= 60) {
         new_time = new_time + 40;
     }
+
     new_time = new_time + offset_minutes;
 
     return new_time;
 }
 
+// this function checks if inputs are valid or not
 int valid_input_check(int town, int month, int day, int time) {
     if (town > 13 || town < 0)
         return FALSE;
@@ -324,6 +339,8 @@ int valid_input_check(int town, int month, int day, int time) {
     return TRUE;
 }
 
+// this funtion returns TRUE if a month has 31 days. FALSE is
+// returned otherwise
 int thirty_one_day_month(int month) {
     if (month == 1 || month == 3 || month == 5 || month == 7 || 
         month == 8 || month == 10 || month == 12)
@@ -332,6 +349,8 @@ int thirty_one_day_month(int month) {
     return FALSE;
 }
 
+// this funtion returns TRUE if a month has 30 days. FALSE is
+// returned otherwise
 int thirty_day_month(int month) {
     if (month == 4 || month == 6 || month == 9 || month == 11)
         return TRUE;
