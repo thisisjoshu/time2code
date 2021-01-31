@@ -24,6 +24,54 @@ int *run_unit_tests(void) {
         printf("test failed :(\n");
         count[1]++;
     }
+    
+    if (get_local_time(-1, 12, 3, 0) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+    
+    if (get_local_time(TOWN_SYDNEY, -5, 3, 0) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+    
+    if (get_local_time(TOWN_SYDNEY, 5, 0, 0) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 0, 1, 0) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 5, -6, 0) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 5, 3, -6) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
 
     if (get_local_time(TOWN_SYDNEY, 3, 4, 2600) == INVALID_INPUT) {
         printf("test passed\n");
@@ -141,6 +189,14 @@ int *run_unit_tests(void) {
     printf("running second set of tests...\n");
 
     if (get_local_time(TOWN_SYDNEY, 5, 20, 0) == 1000) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_WELLINGTON, 1, 31, 2200) == 1100) {
         printf("test passed\n");
         count[0]++;
     } else {
@@ -442,3 +498,4 @@ int *run_unit_tests(void) {
     }
     return count;
 }
+
