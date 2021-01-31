@@ -122,7 +122,7 @@ int main(void) {
 // utc_time should be 0..2359
 // utc_time is hours*100 + minutes
 
-// note UTC year is assumed to be 2020
+// note UTC year is assumed to be 2021
 // note UTC seconds is assumed to be zero
 
 
