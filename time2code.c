@@ -315,6 +315,8 @@ int add_offset(int time, int offset) {
 
 // this function checks if inputs are valid or not
 int valid_input_check(int town, int month, int day, int time) {
+    int minutes = time % 100;
+
     if (town > 13 || town < 0)
         return FALSE;
     
@@ -322,6 +324,9 @@ int valid_input_check(int town, int month, int day, int time) {
         return FALSE;
     
     if (time > 2359 || time < 0)
+        return FALSE;
+    
+    if (minutes > 59)
         return FALSE;
     
     if (day < 1)

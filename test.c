@@ -496,6 +496,46 @@ int *run_unit_tests(void) {
         printf("test failed :(\n");
         count[1]++;
     }
+
+    if (get_local_time(TOWN_SYDNEY, 3, 4, 560) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 3, 4, 60) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 3, 4, 61) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 3, 4, 172) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
+
+    if (get_local_time(TOWN_SYDNEY, 3, 4, 99) == INVALID_INPUT) {
+        printf("test passed\n");
+        count[0]++;
+    } else {
+        printf("test failed :(\n");
+        count[1]++;
+    }
     return count;
 }
 
