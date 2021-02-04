@@ -1,7 +1,7 @@
 // time2code.c
 // Assignment 1, COMP1511 18s1: Time To Code.
 //
-// This program by JOSHUA ZOBULE (z5196042)
+// This program is written by JOSHUA ZOBULE (z5196042)
 //
 // Version 1.0.2: Add version numbers and header comment.
 // Version 1.0.1: Fix day/time variable mix-up in main function.
@@ -39,6 +39,7 @@ int nz_standard_time(int month, int day, int time);
 int lh_standard_time(int month, int day, int time);
 int add_offset(int time, int offset);
 int valid_input_check(int town, int month, int day, int time);
+int twenty_eight_day_month(int month);
 int thirty_one_day_month(int month);
 int thirty_day_month(int month);
 
@@ -332,7 +333,7 @@ int valid_input_check(int town, int month, int day, int time) {
     if (day < 1)
         return FALSE;
     
-    if (month == 2 && day > 28)
+    if (twenty_eight_day_month(month) == TRUE && day > 28)
         return FALSE;
 
     if (thirty_one_day_month(month) == TRUE && day > 31)
@@ -342,6 +343,15 @@ int valid_input_check(int town, int month, int day, int time) {
         return FALSE;
 
     return TRUE;
+}
+
+// this funtion returns TRUE if a month has 28 days. FALSE is
+// returned otherwise
+int twenty_eight_day_month(int month) {
+    if (month == 2)
+        return TRUE;
+    
+    return FALSE;
 }
 
 // this funtion returns TRUE if a month has 31 days. FALSE is
