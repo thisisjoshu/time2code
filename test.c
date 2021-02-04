@@ -10,6 +10,7 @@ void test_passed(int points[2]);
 void test_failed(int points[2], int test_num);
 void give_feedback(int test_num, int town, int month, int day, int time, 
     int expected);
+void print_town(int town);
 
 int *run_unit_tests(void) {
     static int count[2] = {0, 0};
@@ -259,6 +260,7 @@ void give_feedback(int test_num, int town, int month, int day, int time,
     printf("\n---------------test-%d-feedback---------------\n", test_num);
     printf("The input for this test was:\n");
     printf("\n");
+    print_town(town);
     printf("UTC month = %d\n", month);
     printf("UTC day = %d\n", day);
     printf("UTC time = %d\n", time);
@@ -279,4 +281,24 @@ void give_feedback(int test_num, int town, int month, int day, int time,
     else
         printf("local_time is %d\n", expected);
     printf("\n----------------------------------------------\n");
+}
+
+void print_town(int town) {
+    printf("Town chosen = ");
+
+    if (town == TOWN_ADELAIDE) printf("Adelaide (0)");
+    else if (town == TOWN_BRISBANE) printf("Brisbane (1)");
+    else if (town == TOWN_BROKEN_HILL) printf("Broken Hill (2)");
+    else if (town == TOWN_CANBERRA) printf("Canberra (3)");
+    else if (town == TOWN_DARWIN) printf("Darwin (4)");  
+    else if (town == TOWN_EUCLA) printf("Eucla (5)");
+    else if (town == TOWN_HOBART) printf("Hobart (6)");
+    else if (town == TOWN_LORD_HOWE_IS) printf("Lord Howe Island (7)");
+    else if (town == TOWN_MELBOURNE) printf("Melbourne (8)");
+    else if (town == TOWN_PERTH) printf("Perth (9)");
+    else if (town == TOWN_SYDNEY) printf("Sydney (10)");
+    else if (town == TOWN_AUCKLAND) printf("Auckland (11)");
+    else if (town == TOWN_CHRISTCHURCH) printf("Christchurch (12)");
+    else if (town == TOWN_WELLINGTON) printf("Wellington (13)");
+    printf("\n");
 }
