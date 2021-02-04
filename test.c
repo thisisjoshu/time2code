@@ -11,6 +11,7 @@ void test_failed(int points[2], int test_num);
 void give_feedback(int test_num, int town, int month, int day, int time, 
     int expected);
 void print_town(int town);
+void print_clue(int output, int expected);
 
 int *run_unit_tests(void) {
     static int count[2] = {0, 0};
@@ -280,6 +281,9 @@ void give_feedback(int test_num, int town, int month, int day, int time,
         printf("invalid input - local time could not be calculated\n");
     else
         printf("local_time is %d\n", expected);
+    
+    printf("\n");
+    print_clue(local_time, expected);
     printf("\n----------------------------------------------\n");
 }
 
@@ -300,5 +304,21 @@ void print_town(int town) {
     else if (town == TOWN_AUCKLAND) printf("Auckland (11)");
     else if (town == TOWN_CHRISTCHURCH) printf("Christchurch (12)");
     else if (town == TOWN_WELLINGTON) printf("Wellington (13)");
+    printf("\n");
+}
+
+void print_clue(int output, int expected) {
+    printf("*Potential Hint*\n");
+    if (output == INVALID_INPUT && expected != INVALID_INPUT) {
+        printf("Your program decided that the input was invalid\n");
+        printf("when it's actually a valid input.");
+    } else if (expected == INVALID_INPUT && output != INVALID_INPUT) {
+        printf("Your program decided that the input was valid\n");
+        printf("when it's actually an invalid input.");
+    } else if (output != expected) {
+        printf("Your program miscalculated the time.\n");
+        printf("This may be due to incorrect time conversion/formatting,\n");
+        printf("incorrect calculations or not considering daylight savings.\n");
+    }
     printf("\n");
 }
