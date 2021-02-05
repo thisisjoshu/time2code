@@ -141,11 +141,11 @@ int get_local_time(int town, int utc_month, int utc_day, int utc_time) {
 
     // add offset
     if (timezone == TIMEZONE_AWST)
-        local_time = add_offset(utc_time,TIMEZONE_AWST_OFFSET);
+        local_time = add_offset(utc_time, TIMEZONE_AWST_OFFSET);
     else if (timezone == TIMEZONE_ACWST)
         local_time = add_offset(utc_time, TIMEZONE_ACWST_OFFSET);
     else if (timezone == TIMEZONE_ACST)
-        local_time = add_offset(utc_time,TIMEZONE_ACST_OFFSET);
+        local_time = add_offset(utc_time, TIMEZONE_ACST_OFFSET);
     else if (timezone == TIMEZONE_ACDT) 
         local_time = add_offset(utc_time, TIMEZONE_ACDT_OFFSET);
     else if (timezone == TIMEZONE_AEST)
