@@ -1,2 +1,4 @@
 # time2code
-re-did comp1511 18s1 assignment 1 for fun. placed tests in external file
+timezones, timezones and more timezones. 
+
+given a date and time in UTC, the program returns the local time in a city that was specified. simple arithmetic and daylight savings considerations.
